@@ -3,9 +3,9 @@ markdown: kramdown
 permalink: /blog/:title/
 
 collections:
-  notes:
+  teachings:
     output: true
-    permalink: /notes/:path/
+    permalink: /teachings/:path/
 
 defaults:
   - scope:
