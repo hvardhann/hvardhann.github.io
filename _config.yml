@@ -1,0 +1,23 @@
+title: Your Site
+markdown: kramdown
+permalink: /blog/:title/
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "page"
+
+exclude:
+  - README.md

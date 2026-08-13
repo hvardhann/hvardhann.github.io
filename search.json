@@ -1,0 +1,15 @@
+---
+layout: null
+---
+{% assign all_items = site.posts | concat: site.notes %}
+{% assign json_parts = "" %}
+{% for item in all_items %}
+{% if item.url contains "/blog/" %}{% assign section = "Blog" %}{% else %}{% assign section = "Notes" %}{% endif %}
+{% capture entry %}{"title": {{ item.title | jsonify }}, "url": {{ item.url | relative_url | jsonify }}, "section": {{ section | jsonify }}, "tags": {{ item.tags | jsonify }}, "excerpt": {{ item.content | strip_html | strip_newlines | truncate: 160 | jsonify }}}{% endcapture %}
+{% if forloop.first %}
+{% assign json_parts = entry %}
+{% else %}
+{% assign json_parts = json_parts | append: "," | append: entry %}
+{% endif %}
+{% endfor %}
+[{{ json_parts }}]
