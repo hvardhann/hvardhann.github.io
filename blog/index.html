@@ -1,0 +1,14 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+{% if site.posts.size == 0 %}
+<p class="empty">No posts yet.</p>
+{% endif %}
+{% for post in site.posts %}
+<a class="list-item" href="{{ post.url | relative_url }}">
+  <span class="list-title">{{ post.title }}</span>
+  <span class="list-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+</a>
+{% endfor %}
