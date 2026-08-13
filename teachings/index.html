@@ -1,0 +1,14 @@
+---
+layout: default
+title: Teachings
+permalink: /teachings/
+---
+{% assign items = site.teachings | sort: "title" %}
+{% if items.size == 0 %}
+<p class="empty">No teachings yet.</p>
+{% endif %}
+{% for item in items %}
+<a class="list-item" href="{{ item.url | relative_url }}">
+  <span class="list-title">{{ item.title }}</span>
+</a>
+{% endfor %}
