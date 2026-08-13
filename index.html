@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<p class="intro">Writing and notes on algorithms, math, and computer science. Read <a href="{{ '/how-i-write/' | relative_url }}">how this site is written</a>.</p>
+
+{% assign recent = site.posts | slice: 0, 5 %}
+{% if recent.size == 0 %}
+<p class="empty">No posts yet.</p>
+{% endif %}
+{% for post in recent %}
+<a class="list-item" href="{{ post.url | relative_url }}">
+  <span class="list-title">{{ post.title }}</span>
+  <span class="list-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+</a>
+{% endfor %}
