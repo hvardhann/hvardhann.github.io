@@ -34,12 +34,20 @@ a { color: inherit; text-decoration: none; }
 nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 26px;
+  justify-content: space-between;
   padding: 30px 24px;
   max-width: 720px;
   margin: 0 auto;
   font-size: 15px;
+}
+
+.home-link { color: var(--ink-soft); }
+.home-link:hover { color: var(--ink); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
 }
 
 nav a { color: var(--ink-soft); padding-bottom: 3px; border-bottom: 2px solid transparent; }
