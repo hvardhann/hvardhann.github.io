@@ -1,0 +1,35 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+<input type="text" id="search-input" placeholder="Search…" autocomplete="off">
+<div id="search-results"></div>
+
+<script>
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var input = document.getElementById('search-input');
+      var results = document.getElementById('search-results');
+
+      function render(items) {
+        results.innerHTML = items.map(function(item) {
+          return '<a class="list-item" href="' + item.url + '">' +
+                 '<span class="list-title">' + item.title + '</span>' +
+                 '<span class="list-meta">' + item.section + '</span></a>';
+        }).join('');
+      }
+
+      input.addEventListener('input', function() {
+        var q = input.value.toLowerCase().trim();
+        if (!q) { results.innerHTML = ''; return; }
+        var matches = data.filter(function(item) {
+          return item.title.toLowerCase().indexOf(q) > -1 ||
+                 item.excerpt.toLowerCase().indexOf(q) > -1 ||
+                 (item.tags || []).join(' ').toLowerCase().indexOf(q) > -1;
+        });
+        render(matches);
+      });
+    });
+</script>
