@@ -1,7 +1,7 @@
 ---
 layout: null
 ---
-{% assign all_items = site.posts | concat: site.notes %}
+{% assign all_items = site.posts | concat: site.teachings %}
 {% assign json_parts = "" %}
 {% for item in all_items %}
 {% if item.url contains "/blog/" %}{% assign section = "Blog" %}{% else %}{% assign section = "Notes" %}{% endif %}
