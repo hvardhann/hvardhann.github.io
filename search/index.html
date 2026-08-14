@@ -26,8 +26,7 @@ permalink: /search/
         if (!q) { results.innerHTML = ''; return; }
         var matches = data.filter(function(item) {
           return item.title.toLowerCase().indexOf(q) > -1 ||
-                 item.excerpt.toLowerCase().indexOf(q) > -1 ||
-                 (item.tags || []).join(' ').toLowerCase().indexOf(q) > -1;
+       item.excerpt.toLowerCase().indexOf(q) > -1;
         });
         render(matches);
       });
